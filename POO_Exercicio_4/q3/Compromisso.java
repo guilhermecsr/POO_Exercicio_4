@@ -1,13 +1,19 @@
 package POO_Exercicio_4.q3;
 
-public class Compromisso {
-    private String titulo, descricao, local, data;
+import java.util.Calendar;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
-    public Compromisso(String titulo, String descricao, String local, String data) {
+public class Compromisso {
+    private String titulo, descricao, local;
+    private Date data;
+
+    public Compromisso(String titulo, String descricao, String local, Date data) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.local = local;
-        this.data = data;
+        this.setData(data);
     }
 
     public String getTitulo() {
@@ -34,11 +40,11 @@ public class Compromisso {
         this.local = local;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

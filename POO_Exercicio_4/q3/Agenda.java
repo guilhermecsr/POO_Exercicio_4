@@ -1,6 +1,10 @@
 package POO_Exercicio_4.q3;
 
 import java.util.*;
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Agenda {
     private ArrayList<Compromisso> compromissos;
@@ -10,7 +14,7 @@ public class Agenda {
         this.compromissos = new ArrayList<Compromisso>();
     }
 
-    public void recebeCompromissos() {
+    public void recebeCompromissos() throws ParseException {
         Integer c = 0;
         while (true) {
             c++;
@@ -26,7 +30,11 @@ public class Agenda {
             System.out.println("Inserir local");
             String local = keyboard.nextLine();
             System.out.println("Inserir data");
-            String data = keyboard.nextLine();
+            // Integer dia = keyboard.nextInt();
+            // Integer mes = keyboard.nextInt();
+            // Integer ano = keyboard.nextInt();
+            String quando = keyboard.nextLine();
+            Date data = new SimpleDateFormat("dd/MM/yyyy").parse(quando);
 
             Compromisso compromisso = new Compromisso(titulo, descricao, local, data);
             this.compromissos.add(compromisso);
@@ -34,12 +42,14 @@ public class Agenda {
 
     }
 
-    public void imprimeCompromissos() {
+    public void imprimeCompromissosDoDia(Date dia) {
         this.compromissos.forEach((compromisso) -> {
-            System.out.println(compromisso.getTitulo());
-            System.out.println(compromisso.getDescricao());
-            System.out.println(compromisso.getLocal());
-            System.out.println(compromisso.getData());
+            if (compromisso.getData() == dia) {
+                System.out.println(compromisso.getTitulo());
+                System.out.println(compromisso.getDescricao());
+                System.out.println(compromisso.getLocal());
+                System.out.println(compromisso.getData());
+            }
         });
     }
 }
